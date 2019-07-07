@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="6viewport" content="width=device-width, initial-scale=1.0">
+		<meta http-equiv="X-UA-Compatible" content="ie=edge">
+		<title>|Projects|</title>
+		<!-- Font Awesome -->
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+	<!-- Bootstrap core CSS -->
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+	<!-- Material Design Bootstrap -->
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.3/css/mdb.min.css" rel="stylesheet">
+	</head>
+
+	<body class="container" style='font-family:"Merienda, cursive;'>
+		<!--Navbar-->
+		<nav class="navbar navbar-expand-lg navbar-dark primary-color">
+			<!-- Navbar brand -->
+			<a class="navbar-brand" href="/">|Neighborhood|</a>
+		
+			<!-- Collapse button -->
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#basicExampleNav"
+				aria-controls="basicExampleNav" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			
+			<!-- Collapsible content -->
+			<div class="collapse navbar-collapse" id="basicExampleNav">
+			
+				<!-- Links -->
+				<ul class="navbar-nav mr-auto">
+					<li class="nav-item active">
+						<a class="nav-link" href="/">Home
+							<span class="sr-only">(current)</span>
+						</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="/upload_project/">Submit Project</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="/profile/">Create a profile</a>
+					</li>
+					<li class="nav-item">
+							<a class="nav-link" href="/profile/view_profile/">View your profile</a>
+						</li>
+					<li class="nav-item">
+						<a class="nav-link" href="/logout">Logout</a>
+					</li>
+					<!-- Dropdown -->
+					<li class="nav-item dropdown">
+						<a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown"
+						aria-haspopup="true" aria-expanded="false">Police & Health</a>
+						<div class="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
+							<a class="dropdown-item" href="#">Police Department</a>
+							<a class="dropdown-item" href="#">Health Department</a>
+						</div>
+					</li>
+				</ul>
+				<!-- Links -->
+				
+				<form class="form-inline" action='' method="GET">
+					<div class="md-form my-0">
+					<input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search" name="find_project">
+					</div>
+				</form>
+			</div>
+			<!-- Collapsible content -->
+		</nav>
+		<!-- end of navbar -->
+		<br>
+		<hr>
+		<br>
+		<hr>
+		<div>
+            <h2 class="text-center">Businesses within  Submitted</h2>
+        </div>
+        <br>
+        <hr>
+        <br>
+        <div class='row'>
+            <div class="card">
+                {% for business in neighborhood_business %}
+                <!-- Card image -->
+                <div class="view overlay">
+                    <img class="card-img-top" src="{{business.image.url}}">
+                    <a href="#!">
+                    <div class="mask rgba-white-slight"></div>
+                    </a>
+                </div>
+            
+                <!-- Card content -->
+                <div class="card-body">
+            
+                    <!-- Title -->
+                    <h4 class="card-title" class="pink-text">{{business.biz_name}}</h4>
+                    <!-- Text -->
+                    <p class="card-text">{{business.description}}</p>
+                    <p class="card-text">{{business.email_address}}</p>
+            
+                </div>
+            
+                </div>
+                <!-- Card -->
+                {% endfor %}
+            </div>
+
+
+
+			<!-- JQuery -->
+			<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+			<!-- Bootstrap tooltips -->
+			<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
+			<!-- Bootstrap core JavaScript -->
+			<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+			<!-- MDB core JavaScript -->
+			<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.3/js/mdb.min.js"></script>
+	</body>
+</html>
