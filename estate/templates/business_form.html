@@ -1,0 +1,36 @@
+{% load bootstrap3 %}
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>|Register Business|</title>
+		{{form.media}}
+		{% block styles %}
+
+		{% bootstrap_css %}
+            
+        {% endblock %}
+</head>
+<body class="container" background="https://images.pexels.com/photos/952670/pexels-photo-952670.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" style='font-family:"Merienda, cursive;'>
+    {% block content%}
+    <div class="well">
+
+        <form action="{% url 'process_biz_form' %}" method="POST" enctype='multipart/form-data'>
+            {% csrf_token %}
+            {% bootstrap_form biz_form layout='inline'%}
+            <input type="submit" class="btn btn-pink btn-sm" value="Post">
+		</form>
+		
+
+        {% block scripts %}
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+		{% bootstrap_javascript %} 
+		{% endblock%}
+    </div>
+    {% endblock %}
+</body>
+</html>
