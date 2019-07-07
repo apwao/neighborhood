@@ -36,13 +36,13 @@
 						</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" href="/upload_project/">Submit Project</a>
+						<a class="nav-link" href="/business_form/">Register Business</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" href="/profile/">Create a profile</a>
+						<a class="nav-link" href="/profile_form/">Create a profile</a>
 					</li>
 					<li class="nav-item">
-							<a class="nav-link" href="/profile/view_profile/">View your profile</a>
+							<a class="nav-link" href="/view_profile/">View your profile</a>
 						</li>
 					<li class="nav-item">
 						<a class="nav-link" href="/logout">Logout</a>
@@ -73,14 +73,16 @@
 		<br>
 		<hr>
 		<div>
-            <h2 class="text-center">Businesses within  Submitted</h2>
+            <h2 class="text-center">Neighborhood Businesses</h2>
         </div>
         <br>
         <hr>
-        <br>
+		<br>
         <div class='row'>
+				{% for business in neighborhood_business %}
+				<div class="col-md-4">
             <div class="card">
-                {% for business in neighborhood_business %}
+                
                 <!-- Card image -->
                 <div class="view overlay">
                     <img class="card-img-top" src="{{business.image.url}}">
@@ -96,12 +98,14 @@
                     <h4 class="card-title" class="pink-text">{{business.biz_name}}</h4>
                     <!-- Text -->
                     <p class="card-text">{{business.description}}</p>
-                    <p class="card-text">{{business.email_address}}</p>
+                    <p class="card-text">Email address: {{business.email_address}}</p>
             
                 </div>
             
                 </div>
-                <!-- Card -->
+				<!-- Card -->
+				</div>
+				<br>
                 {% endfor %}
             </div>
 
