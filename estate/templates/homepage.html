@@ -37,13 +37,17 @@
 			  <a class="nav-link" href="/">Home
 				<span class="sr-only">(current)</span>
 			  </a>
-			</li>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/accounts/login/">Join Neighborhood Chat</a>
+      </li>
 			<li class="nav-item">
 			  <a class="nav-link" href="/accounts/register/">Sign Up</a>
 			</li>
 			<li class="nav-item">
 			  <a class="nav-link" href="/accounts/login/">Sign In</a>
-			</li>
+      </li>
+      
 	  
 		  </ul>
 		  <!-- Links -->
@@ -131,32 +135,37 @@
         <hr>
         <br>
         <div class='row'>
-            <div class="card">
-                {% for hood in neighborhood %}
-                <!-- Card image -->
-                <div class="view overlay">
-                    <img class="card-img-top" src="{{hood.view_image.url}}">
-                    <a href="#!">
-                    <div class="mask rgba-white-slight"></div>
-                    </a>
-                </div>
-            
-                <!-- Card content -->
-                <div class="card-body">
-            
-                    <!-- Title -->
-                    <h4 class="card-title" class="pink-text">{{hood.name}}</h4>
-                    <!-- Text -->
-                    <p class="card-text">Current population: {{hood.population}}</p>
-                    <p class="card-text">Located at: {{hood.location}}</p>
-                    <!-- Button -->
-                    <a href="#" class="btn btn-pink">View Businesses</a>
-            
-                </div>
-            
-                </div>
-                <!-- Card -->
-                {% endfor %}
+			{% for hood in neighborhoods %}
+			<div class="col-md-4">
+				<div class="card">
+					
+					<!-- Card image -->
+					<div class="view overlay">
+						<img class="card-img-top" src="{{hood.view_image.url}}">
+						<a href="#!">
+						<div class="mask rgba-white-slight"></div>
+						</a>
+					</div>
+				
+					<!-- Card content -->
+					<div class="card-body">
+				
+						<!-- Title -->
+						<h4 class="card-title" class="pink-text">{{hood.name}}</h4>
+						<!-- Text -->
+						<p class="card-text">Current population: {{hood.population}}</p>
+						<p class="card-text">Located in: {{hood.location}}</p>
+						<!-- Button -->
+						<a href="{% url 'view_businesses' hood.id %}" class="btn btn-pink">View Businesses</a>
+				
+					</div>
+				
+					</div>
+					<br>
+					<!-- Card -->
+					
+				</div>
+				{% endfor %}
             </div>
 
 
