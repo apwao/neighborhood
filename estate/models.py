@@ -80,3 +80,26 @@ class Business(models.Model):
         """
         searched_location=Business.objects.filter(location__pk=location)
         return searched_location
+    
+class Profile(models.Model):
+    """
+    class Profile to facilitae saving od user's profile information to the database
+    """
+    name=models.CharField(max_length=200)
+    user_id=models.ForeignKey(User,default=1)
+    neighborhood=models.CharField(max_length=200)
+    email_address=models.EmailField()
+    
+    def create_profile(self):
+        """
+        create_profile method to save an instance of a profile
+        to the database
+        """
+        self.save()
+        
+    def delete_profile(self):
+        """
+        delete_profile method to remove an existing profile from
+        the database
+        """
+        self.delete()
