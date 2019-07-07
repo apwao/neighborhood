@@ -1,6 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
-from models import Neighborhood
+
 
 # Create your models here.
 class Neighborhood(models.Model):
@@ -48,3 +48,19 @@ class Business(models.Model):
     email_address=models.EmailField(max_length=200)
     description=models.TextField()
     image=models.ImageField(upload_to='businesses/')
+    
+    def create_business(self):
+        """
+        create_business method to save an instance of a business
+        to the database
+        """
+        self.save()
+        
+    def delete_business(self):
+        """
+        delete_business method to remove an existing business from
+        the database
+        """
+        self.delete()
+        
+    
