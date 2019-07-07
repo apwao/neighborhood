@@ -1,6 +1,5 @@
-from models import Business
+from .models import Business
 from django import forms
-
 
 class BusinessForm(forms.ModelForm):
     """
@@ -8,7 +7,7 @@ class BusinessForm(forms.ModelForm):
     with the application
     """
     class Meta:
-        model:Business
-        exclude:['owner','neighborhood_id']
-    
+        model=Business
+        fields=('biz_name','email_address','description','image')
+       
     
