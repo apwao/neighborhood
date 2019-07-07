@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from models import Neighborhood
 
 # Create your models here.
 class Neighborhood(models.Model):
@@ -9,6 +10,7 @@ class Neighborhood(models.Model):
     name=models.CharField(max_length=200)
     location=models.CharField(max_length=200)
     population=models.PositiveIntegerField()
+    view_image=models.ImageField(upload_to='neighborhoods/')
 
     def create_neighborhood(self):
         """
@@ -35,3 +37,14 @@ class Neighborhood(models.Model):
         
     def __str__(self):
         return self.name
+    
+class Business(models.Model):
+    """
+    class Business to help a user register their business with the application
+    """
+    biz_name=models.CharField(max_length=300)
+    owner=models.ForeignKey(User,default=1, on_delete=models.CASCADE)
+    neighborhood_id=models.ForeignKey(Neighborhood, default=1, on_delete=models.CASCADE)
+    email_address=models.EmailField(max_length=200)
+    description=models.TextField()
+    image=models.ImageField(upload_to='businesses/')
