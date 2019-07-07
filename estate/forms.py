@@ -1,4 +1,4 @@
-from .models import Business
+from .models import Business,Profile
 from django import forms
 
 class BusinessForm(forms.ModelForm):
@@ -10,4 +10,12 @@ class BusinessForm(forms.ModelForm):
         model=Business
         fields=('biz_name','email_address','description','image')
        
-    
+class ProfileForm(forms.ModelForm):
+    """
+    class BusinessForm to enable a user to register their businesses
+    with the application
+    """
+    class Meta:
+        model=Profile
+        fields=('name','email_address','neighborhood','profile_pic')
+       
