@@ -123,6 +123,48 @@
 	  <hr>
 	  <br>
       <!--/.Carousel Wrapper-->
+
+		<div>
+            <h2 class="text-center">Know Your Neighborhood</h2>
+        </div>
+        <br>
+        <hr>
+        <br>
+        <div class='row'>
+            <div class="card">
+                {% for hood in neighborhood %}
+                <!-- Card image -->
+                <div class="view overlay">
+                    <img class="card-img-top" src="{{hood.view_image.url}}">
+                    <a href="#!">
+                    <div class="mask rgba-white-slight"></div>
+                    </a>
+                </div>
+            
+                <!-- Card content -->
+                <div class="card-body">
+            
+                    <!-- Title -->
+                    <h4 class="card-title" class="pink-text">{{hood.name}}</h4>
+                    <!-- Text -->
+                    <p class="card-text">Current population: {{hood.population}}</p>
+                    <p class="card-text">Located at: {{hood.location}}</p>
+                    <!-- Button -->
+                    <a href="#" class="btn btn-pink">View Businesses</a>
+            
+                </div>
+            
+                </div>
+                <!-- Card -->
+                {% endfor %}
+            </div>
+
+
+
+
+
+
+
       <!-- JQuery -->
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <!-- Bootstrap tooltips -->
