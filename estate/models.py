@@ -89,6 +89,7 @@ class Profile(models.Model):
     user_id=models.ForeignKey(User,default=1)
     neighborhood=models.CharField(max_length=200)
     email_address=models.EmailField()
+    profile_pic=models.ImageField(upload_to='profile_pics/')
     
     def create_profile(self):
         """
