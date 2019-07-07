@@ -1,8 +1,8 @@
 from django.shortcuts import render,redirect
 from django.http import HttpResponse,Http404,HttpResponseRedirect
 from django.contrib.auth.decorators import login_required
-from .models import Neighborhood,Business
-from .forms import BusinessForm
+from .models import Neighborhood,Business,Profile
+from .forms import BusinessForm,ProfileForm
 
 
 # Create your views here.
@@ -50,3 +50,33 @@ def process_biz_form(request):
         biz_form=BusinessForm()
         
     return render(request, 'businesses.html')
+@login_required(login_url='/accounts/login/')
+def profile_form(request):
+    """
+    profile form view function to display a profile form to enable user to create
+    a profile
+    """
+    current_user=request.user
+    if request.method == 'POST':
+        form = ProfileForm(request.POST,request.FILES)
+        if form.is_valid():
+            created_profile=form.save()
+            return redirect(view_profile)
+        else:
+            return Http404
+    else:
+        form_profile=ProfileForm()
+    return render(request, 'profile_form.html', {'form_profile':form_profile})
+
+def view_profile(request):
+    """
+    view_profile view function to profile information provided by the user and store it the database
+    """
+    try:
+        current_user=request.user 
+        user_profile=Profile.objects.get(user_id=current_user.id)
+    except:
+        return redirect(profile_form)
+    
+    return render(request, 'profile.html',{'user_profile':user_profile})
+    
