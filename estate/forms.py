@@ -1,13 +1,14 @@
-from models import Neighborhood
+from models import Business
 from django import forms
 
-class NeighborhoodForm(forms.ModelForm):
+
+class BusinessForm(forms.ModelForm):
     """
-    class NeighborhoodForm to enable the Administrator to create
-    instances of a neighborhood
+    class BusinessForm to enable a user to register their businesses
+    with the application
     """
     class Meta:
-        model:Neighborhood
-        fields=('name','location','population')
+        model:Business
+        exclude:['owner','neighborhood_id']
     
     
