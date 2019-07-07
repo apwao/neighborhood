@@ -5,4 +5,5 @@ from . import views
 
 urlpatterns=[
     url('^$', views.homepage, name='homepage'),
+    url('^view_businesses/(\d+)/', views.view_businesses,name='view_businesses')
 ]
