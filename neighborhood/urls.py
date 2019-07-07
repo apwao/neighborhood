@@ -27,3 +27,6 @@ urlpatterns = [
     url(r'^logout/$', views.logout, {"next_page":'/'}),
     url(r'',include('estate.urls')),
 ]
+if settings.DEBUG:
+    urlpatterns+=static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
+
