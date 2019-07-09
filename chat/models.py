@@ -12,7 +12,7 @@ class Post(models.Model):
     post=models.TextField()
     upload_date=models.DateTimeField(auto_now_add=True)
     posted_by=models.ForeignKey(User, default=1, on_delete=models.CASCADE)
-    neighborhood_id=models.ForeignKey(Neighborhood,on_delete=CASCADE)
+    neighborhood_id=models.ForeignKey(Neighborhood,on_delete=models.CASCADE)
     
     def save_post(self):
         """
