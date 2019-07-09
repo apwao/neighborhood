@@ -8,5 +8,9 @@ class PostForm(forms.ModelForm):
     class Meta:
         model=Post
         fields=('title','post')
+        # widget={
+        #     'neighborhood_name':forms.SelectMultiple(),
+        # }
+        
         
         
