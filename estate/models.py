@@ -90,6 +90,7 @@ class Profile(models.Model):
     neighborhood=models.CharField(max_length=200)
     email_address=models.EmailField()
     profile_pic=models.ImageField(upload_to='profile_pics/')
+    neighborhood_name=models.ForeignKey(Neighborhood, default=0)
     
     def create_profile(self):
         """
