@@ -42,10 +42,11 @@ def process_biz_form(request):
     if request.method == 'POST':
         form = BusinessForm(request.POST, request.FILES)
         if form.is_valid():
-            business_form=form.save(commit=True)
+            business_form=form.save(commit=False)
+            
         else:
             raise Http404
-        return redirect(view_businesses)
+        return redirect(homepage)
     else:
         biz_form=BusinessForm()
         
@@ -60,7 +61,10 @@ def profile_form(request):
     if request.method == 'POST':
         form = ProfileForm(request.POST,request.FILES)
         if form.is_valid():
-            created_profile=form.save()
+            created_profile=form.save(commit=False)
+            created_profile.user_id = current_user
+            # created_profile.neighborhood_name=
+            created_profile.save()
             return redirect(view_profile)
         else:
             return Http404
@@ -74,8 +78,10 @@ def view_profile(request):
     """
     try:
         current_user=request.user 
-        user_profile=Profile.objects.get(user_id=current_user.id)
+        print(current_user.id)
+        user_profile=Profile.objects.filter(user_id=current_user.id)
     except:
+        print('Error occured!')
         return redirect(profile_form)
     
     return render(request, 'profile.html',{'user_profile':user_profile})
