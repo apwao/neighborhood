@@ -17,5 +17,10 @@ class ProfileForm(forms.ModelForm):
     """
     class Meta:
         model=Profile
-        fields=('name','email_address','neighborhood','profile_pic')
+        fields=('name','email_address','neighborhood','neighborhood_name','profile_pic', )
+        widget={
+        'neighborhood_name':forms.SelectMultiple(),
+        
+            
+        }
        
