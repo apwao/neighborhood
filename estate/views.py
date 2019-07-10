@@ -15,12 +15,13 @@ def homepage(request):
     return render(request, 'homepage.html',{'neighborhoods':neighborhoods})
 
 @login_required(login_url='/accounts/login/')
-def view_businesses(request,neighborhood_id):
+def view_businesses(request):
     """
     view_businesses function that displays registered businesses within a neighborhood
     """
     
-    neighborhood_business=Business.objects.filter(neighborhood_id=neighborhood_id)
+    neighborhood_business=Business.objects.all()
+    print(neighborhood_business)
     
     return render(request, 'businesses.html',{'neighborhood_business':neighborhood_business})
 
@@ -43,6 +44,9 @@ def process_biz_form(request):
         form = BusinessForm(request.POST, request.FILES)
         if form.is_valid():
             business_form=form.save(commit=False)
+            owner=current_user
+            neighborhood_id=current_user.id
+            form.save()
             
         else:
             raise Http404
@@ -80,9 +84,13 @@ def view_profile(request):
         current_user=request.user 
         print(current_user.id)
         user_profile=Profile.objects.filter(user_id=current_user.id)
+        print(user_profile)
+        for i in user_profile:
+            print(i.name)
+        
     except:
         print('Error occured!')
         return redirect(profile_form)
     
-    return render(request, 'profile.html',{'user_profile':user_profile})
+    return render(request, 'profile.html',{'user_profile':user_profile,'current_user':current_user})
     

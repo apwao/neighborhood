@@ -72,15 +72,6 @@ class Business(models.Model):
         searched_business=cls.objects.filter(biz_name__icontains=businesses)
         return businesses
     
-    @classmethod
-    def search_by_neighborhood(cls,search_term):
-        """
-        method search_by_location to search entire business table for
-        a business that matches the location input by a user
-        """
-        searched_location=Business.objects.filter(location__pk=location)
-        return searched_location
-    
 class Profile(models.Model):
     """
     class Profile to facilitae saving od user's profile information to the database
@@ -105,3 +96,4 @@ class Profile(models.Model):
         the database
         """
         self.delete()
+        
