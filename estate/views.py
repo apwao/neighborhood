@@ -94,3 +94,11 @@ def view_profile(request):
     
     return render(request, 'profile.html',{'user_profile':user_profile,'current_user':current_user})
     
+def search_results(request):
+    
+    if 'search_neighborhood' in request.GET and request.GET['search_neighborhood']:
+        search_term=request.GET.get('search_neighborhood')
+        
+        searched_hood=Neighborhood.search_hoods(search_term)
+        
+    return render(request,'search.html',{'searched_hood':searched_hood})
