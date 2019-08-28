@@ -97,3 +97,8 @@ class Profile(models.Model):
         """
         self.delete()
         
+    @classmethod   
+    def search_hoods(cls, search_term):
+        
+        searched_hood=Neighborhood.objects.filter(name__icontains=search_term)
+        return searched_hood
