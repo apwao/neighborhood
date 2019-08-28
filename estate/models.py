@@ -71,6 +71,8 @@ class Business(models.Model):
         """
         searched_business=cls.objects.filter(biz_name__icontains=businesses)
         return businesses
+    def __str__(self):
+        return self.biz_name
     
 class Profile(models.Model):
     """
