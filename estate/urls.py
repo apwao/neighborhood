@@ -10,6 +10,7 @@ urlpatterns=[
     url(r'^business_form/$', views.business_form, name='business_form'),
     url(r'^profile_form/$',views.profile_form, name='profile_form'),
     url(r'^view_profile/$',views.view_profile, name='view_profile'),
+    url(r'^search/', views.search_results, name='search_results'),
 ]
 if settings.DEBUG:
     urlpatterns+=static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
